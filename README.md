@@ -1,85 +1,136 @@
+# API Restaurante Gustov
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Descripción
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+API Backend para el sistema de gestión del Restaurante Gustov, desarrollado con NestJS.
 
-## Description
+## Requisitos Previos
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- Node.js versión 18.18.0
+- NestJS versión 10.4.5
+- SQL Server (Base de datos)
 
-## Project setup
+## Tecnologías Utilizadas
 
+- NestJS como framework de backend
+- TypeORM para la gestión de base de datos
+- Swagger para documentación de API
+- SQL Server como base de datos
+
+## Configuración del Proyecto
+
+1. Clonar el repositorio
+2. Instalar dependencias:
 ```bash
-$ npm install
+npm install
 ```
 
-## Compile and run the project
-
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+3. Configurar variables de entorno:
+Crear un archivo `.env` en la raíz del proyecto con las siguientes variables:
+```env
+PORT=3000
+DB_HOST=localhost
+DB_PORT=1433
+DB_USERNAME=tu_usuario
+DB_PASSWORD=tu_contraseña
+DB_NAME=GustovRestaurant    # Define aquí el nombre que desees para tu base de datos
+DB_MASTER=master
 ```
 
-## Run tests
+**Nota importante**: Solo necesitas definir el nombre de la base de datos en `DB_NAME`. Al ejecutar `npm run start:dev`, el sistema automáticamente:
+- Creará la base de datos con el nombre especificado si no existe
+- Creará todas las tablas necesarias
+- Insertará datos de prueba en las siguientes tablas:
+  - Platos (Dishes): Insertará platos de ejemplo
+  - Otros datos básicos necesarios para probar el sistema
+
+## Ejecución del Proyecto
 
 ```bash
-# unit tests
-$ npm run test
+# Modo desarrollo
+npm run start:dev
 
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+# Modo producción
+npm run start:prod
 ```
 
-## Resources
+## Documentación API (Swagger)
 
-Check out a few resources that may come in handy when working with NestJS:
+La documentación de la API está disponible en la ruta `/docs` una vez que el proyecto esté en ejecución.
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+## Funcionalidades Principales
 
-## Support
+### 1. Gestión de Platos (Dishes)
+- Crear, actualizar y eliminar platos
+- Listar todos los platos disponibles
+- Buscar platos por ID
+- Gestión de imágenes de platos
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### 2. Gestión de Ventas (Sales)
+- Registro de nuevas ventas
+- Consulta de ventas realizadas
+- Reporte diario de ventas
+- Detalle de ventas por usuario
 
-## Stay in touch
+### 3. Gestión de Usuarios (Users)
+- Registro de usuarios
+- Actualización de información de usuarios
+- Gestión de roles y permisos
+- Activación/desactivación de usuarios
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### 4. Detalles de Venta (Sale Details)
+- Registro detallado de productos por venta
+- Consulta de detalles de venta
+- Cálculo de subtotales y totales
 
-## License
+### 5. Gestión de Imágenes (Upload Images)
+- Carga y actualización de imágenes de platos
+- Almacenamiento en base64
+- Asociación de imágenes con platos
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+## Estructura del Proyecto
+
+El proyecto está organizado en módulos:
+- Dish: Gestión de platos
+- Sale: Gestión de ventas
+- SaleDetail: Detalles de ventas
+- User: Gestión de usuarios
+- UploadImage: Gestión de imágenes
+
+## Base de Datos
+
+La aplicación utiliza SQL Server como base de datos y TypeORM como ORM. Al iniciar el proyecto con `npm run start:dev`:
+
+1. **Creación Automática**: 
+   - El sistema verifica si existe la base de datos especificada en `DB_NAME`
+   - Si no existe, la crea automáticamente
+   - Crea todas las tablas necesarias basadas en las entidades definidas
+
+2. **Datos de Prueba**:
+   - Se insertan automáticamente platos de ejemplo en la tabla Dishes
+   - Estos datos incluyen nombres, precios y descripciones de platos típicos
+   - Te permite probar inmediatamente las funcionalidades del sistema
+
+3. **Sincronización**:
+   - Las tablas se sincronizan automáticamente con las entidades
+   - No necesitas ejecutar migraciones ni scripts SQL manualmente
+
+## Seguridad
+
+- Validación de datos de entrada
+- Manejo de errores HTTP
+- Relaciones entre entidades protegidas
+
+## Notas Adicionales
+
+- Asegúrese de tener SQL Server en ejecución antes de iniciar el proyecto
+- La documentación detallada de los endpoints está disponible en Swagger
+- El proyecto utiliza TypeScript para un desarrollo más robusto
+
+## Mantenimiento y Soporte
+
+Para reportar problemas o sugerir mejoras, por favor crear un issue en el repositorio del proyecto.
